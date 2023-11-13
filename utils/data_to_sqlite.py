@@ -184,7 +184,7 @@ if __name__ == '__main__':
     print('BASE PATH: ' + BASE_PATH)
 
     taxnos = """ '91310113685471496R' """
-    sample_invoice_export(taxnos=taxnos,if_exist='replace')
+    sample_invoice_export(taxnos=taxnos, if_exist='replace')
     # config_db_export(if_exist='replace')
     # test_sqlalchemy()
 
