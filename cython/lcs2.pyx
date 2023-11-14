@@ -12,7 +12,7 @@ cimport openmp
 from libcpp cimport bool as bool
 from libcpp.string cimport string
 from libcpp.vector cimport vector
-from .compat import bytes_list_cast, list_of_bytes_list_cast
+from compat import bytes_list_cast, list_of_bytes_list_cast
 
 ctypedef vector[int] int_vec
 ctypedef vector[int_vec] int_vec_vec
