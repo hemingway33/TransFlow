@@ -3,7 +3,7 @@ import numpy as np
 import os
 from configs import settings
 from utils.utils import sketch_core_brands
-from preprocess.data_preprocess import DataQualityManager
+from preprocess.preprocess import DataQualityManager
 import warnings
 from utils.Logger import Logger,logcode
 logging = Logger(level="info", name=__name__).getlog()
