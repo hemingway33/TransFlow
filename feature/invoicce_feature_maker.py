@@ -3,12 +3,13 @@ import numpy as np
 import os
 from configs import settings
 from utils.utils import sketch_core_brands
-from data_mangle import DataQualityManager
+from preprocess.data_preprocess import DataQualityManager
 import warnings
 from utils.Logger import Logger,logcode
 logging = Logger(level="info", name=__name__).getlog()
 warnings.filterwarnings("ignore")
 from utils.utils import dump_model_to_file
+
 
 def compute_invoice_features_and_score(supplier_name, slice_date, supplier_source, df1_full_hist, df2_full_hist, extract_quality_buyers=True,
                                        client_outpath='', save_source_data=False):

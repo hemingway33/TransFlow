@@ -3,6 +3,7 @@ import pandas as pd
 import sqlite3
 import hashlib
 import re
+import pickle
 from Logger import Logger
 logging = Logger(level="info", name=__name__).getlog()
 
@@ -224,8 +225,6 @@ def load_invoice_data(path, invoice_table_name, detail_table_name, taxnos,mode='
     results_detail = typeConverter(pd.DataFrame.from_records(data=query.fetchall(), columns=cols), converters)
     cur.close()
     return results_invoice, results_detail
-
-import pickle
 
 
 def dump_model_to_file(model, path):

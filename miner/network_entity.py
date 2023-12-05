@@ -1,1 +1,2 @@
-from networkx import graphmatrix
+from networkx import *
+
