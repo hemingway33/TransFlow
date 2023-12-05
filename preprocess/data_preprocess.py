@@ -30,6 +30,7 @@ CPU_CORE_NUM = int(cpu_count() * 3 / 4)
 发票数据标准化处理工具箱
 """
 
+
 class DataQualityManager(object):
 
     @staticmethod
