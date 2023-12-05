@@ -1,8 +1,8 @@
 import pandas as pd
 import numpy as np
 import os
-from configs import settings
-from utils.utils import sketch_core_brands
+import settings
+from preprocess.anchoring.identify_anchor import sketch_core_brands
 from preprocess.preprocess import DataQualityManager
 import warnings
 from utils.Logger import Logger,logcode
@@ -1667,7 +1667,7 @@ def compute_invoice_features_and_score(supplier_name, slice_date, supplier_sourc
 
         retention_rate[N] = np.mean(retention_rates)
 
-    # credit_score = Scorer.match('forwarder_v1', valid_months=total_invoice_months, offset=0., factor=1., debug=True).score(dict(), left_clip=0, right_clip=100).get_score()
+    # credit_score = Scorer.match('forwarder_v1', valid_months=total_invoice_months, offset=0., factor=1., debug=True).scorer(dict(), left_clip=0, right_clip=100).get_score()
     default_profit_rate = settings.R_CONTAINER["信用测额"]["L-利润-1"]["可配参数"]["value"]
     # CreditRation.match('PYP').base_ration(buyers_invoice_profile, credit_score, shipping_revenue_latest_12_months, default_profit_rate).get_rations()
     # RiskEntry().decide_on_features(dict((f, settings.R_CONTAINER["准入规则"][f]["企业实际表现"]["value"]) for f in settings.R_CONTAINER["准入规则"]))

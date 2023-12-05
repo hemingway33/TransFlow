@@ -10,7 +10,7 @@ from multiprocessing import cpu_count
 from scipy import spatial
 from scipy.sparse import coo_matrix
 from textdistance import damerau_levenshtein
-from configs import settings
+import settings
 from utils.Logger import Logger, logcode
 logging = Logger(level="info", name=__name__).getlog()
 
@@ -18,7 +18,7 @@ try:
     from cython import lcs2
 except Exception as e:
     logging.error("////////////////////////////////////////")
-    logging.error("Cannot import lcs2 cython module!!")
+    logging.error("Cannot import lcs2 cython_acc module!!")
     logging.error(e)
     logging.error("////////////////////////////////////////")
 
@@ -109,12 +109,12 @@ class DataQualityManager(object):
         start = datetime.now()
         logging.info("使用lcs2算法，当前计算类型为: {}, 使用内核数为： {}, 使用门槛值为: {} ".format(match_type, core_num, thresh))
         logging.info("lsh_list length: {}  rhs_list length: {} ".format(len(lhs_list), len(rhs_list)))
-        logging.info("cython 并行计算相似性矩阵，使用进程数：{} 开始时间：{}".format(core_num, start))
+        logging.info("cython_acc 并行计算相似性矩阵，使用进程数：{} 开始时间：{}".format(core_num, start))
         rows, columns, values = lcs2.sparse_sim_matrix(lhs_list, rhs_list, thresh, key_word_list, head_range_list, head_plus_list, minus_range_list, minus_value_list, plus_range_list, plus_value_list, threads_num=core_num, match_type=match_type)
         assert len(rows) == len(columns)
         sparse_sim_matrix = coo_matrix((values, (rows, columns)), shape=(len(lhs_list), len(rhs_list)))
         end = datetime.now()
-        logging.info("cython 并行计算相似性矩阵完成，进程数：{} 结束时间：{}".format(core_num, end))
+        logging.info("cython_acc 并行计算相似性矩阵完成，进程数：{} 结束时间：{}".format(core_num, end))
         logging.info("总耗时:{}".format(end - start))
         return sparse_sim_matrix
 

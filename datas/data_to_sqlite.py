@@ -2,7 +2,7 @@ import pandas as pd
 import sqlite3
 import os
 import sys
-from dataSource import DBconnector
+from data_source import DBconnector
 
 
 class ToSqlite(object):

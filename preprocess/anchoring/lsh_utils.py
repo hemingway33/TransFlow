@@ -5,6 +5,7 @@
 import re
 from datasketch import MinHash
 
+
 father_end_signal = ["集团", "公司", "店", "药房", "院", "站", "大学", "学校", "基金", "园", "电视台", "银行", "小学", "部队", "狱", "厂", "会",
                      "所", "政府", "局", "理处", "馆", "中心", "社"]
 father_end_signal_patt = "|".join(father_end_signal)
@@ -114,3 +115,8 @@ def parse_and_quantize(enterprise_name, administrative_divisions_pattern, organi
         quantized_features.update(n_gram_generator(key_body, 2))
         quantized_features.update(n_gram_generator(key_body, 3))
     return quantized_features
+
+
+
+
+
